@@ -1,18 +1,23 @@
 package net.one4real.spotmusic;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import net.one4real.spotmusic.ui.main.SectionsPagerAdapter;
 
@@ -33,14 +38,43 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //View item = toolbar.findViewById(R.id.action_qr);
+
+        final MainActivity mainActivity = this;
+
+//        item.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Dialog dialog = new Dialog(mainActivity);
+////                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+////                dialog.setContentView(R.layout.modal_qr);
+////                dialog.setCanceledOnTouchOutside(true);
+////                dialog.show();
+//            }
+//        });
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (item.getItemId() == R.id.action_qr) {
+                    Dialog dialog = new Dialog(mainActivity);
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    dialog.setContentView(R.layout.modal_qr);
+                    dialog.setCanceledOnTouchOutside(true);
+                    dialog.show();
+                }
+                return true;
+            }
+        });
+
         //findViewById(R.id.imageView13).setClipToOutline(true);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
     }

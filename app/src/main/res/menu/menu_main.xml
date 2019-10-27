@@ -4,9 +4,9 @@
     tools:context="net.one4real.spotmusic.MainActivity">
     <item
         android:id="@+id/action_qr"
+        android:icon="@drawable/ic_sm_qr"
         android:orderInCategory="300"
         android:title="Qr"
-        android:icon="@drawable/ic_sm_qr"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_user"
